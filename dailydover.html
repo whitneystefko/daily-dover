@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Not Making You a List — The Daily Dover Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FAFBFF;
+    --ink: #0F0E1A;
+    --navy: #1B1F3B;
+    --navy-mid: #2D3358;
+    --purple: #5B4B9A;
+    --purple-light: #7C6BBF;
+    --purple-pale: #EEE9FF;
+    --electric: #E8FF47;
+    --electric-dim: rgba(232, 255, 71, 0.15);
+    --soft-bg: #F4F3FA;
+    --mid-text: #6B6490;
+    --border: rgba(91, 75, 154, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 251, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--navy);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid-text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 100px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 28px;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 86px);
+    line-height: 1.0;
+    font-weight: 900;
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--purple);
+  }
+
+  .hero-subhead {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 2vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--mid-text);
+    margin-bottom: 36px;
+    line-height: 1.4;
+  }
+
+  .hero-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4A4770;
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+
+  .hero-body strong { font-weight: 500; color: var(--navy); }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--navy);
+    color: var(--electric);
+    text-decoration: none;
+    padding: 16px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    transition: all 0.2s ease;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hero-cta:hover {
+    background: var(--purple);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .hero-right {
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(91,75,154,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(232,255,71,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* ── BRIEFING CARD ── */
+  .briefing-preview {
+    background: #13172E;
+    border: 1px solid rgba(91,75,154,0.3);
+    border-radius: 4px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(232,255,71,0.05);
+  }
+
+  .briefing-header {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .briefing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .briefing-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .briefing-section { margin-bottom: 18px; }
+
+  .briefing-section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--electric);
+    opacity: 0.6;
+    margin-bottom: 10px;
+  }
+
+  .briefing-item {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 7px;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .briefing-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .briefing-item.urgent { color: var(--electric); }
+  .briefing-item.urgent::before { color: var(--electric); opacity: 0.6; }
+
+  .briefing-chip {
+    display: inline-block;
+    background: rgba(255,255,255,0.07);
+    padding: 2px 7px;
+    border-radius: 2px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-left: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .briefing-claudette {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .claudette-dot {
+    width: 6px; height: 6px;
+    background: var(--electric);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  /* ── SHARED SECTION STYLES ── */
+  section { padding: 100px 80px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--purple);
+    opacity: 0.3;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 54px);
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--navy);
+  }
+
+  .section-title em { font-style: italic; color: var(--purple); }
+
+  /* ── ORIGIN ── */
+  .origin { background: var(--soft-bg); }
+
+  .origin-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .origin-text p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #4A4770;
+    margin-bottom: 18px;
+  }
+
+  .origin-text p strong { color: var(--navy); font-weight: 500; }
+
+  .byline-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--purple-pale);
+    border: 1px solid var(--border);
+    padding: 10px 18px;
+    margin-bottom: 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--purple);
+  }
+
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.5vw, 32px);
+    line-height: 1.35;
+    font-style: italic;
+    color: var(--navy);
+    padding: 44px;
+    background: var(--white);
+    border-left: 4px solid var(--purple);
+    position: relative;
+    box-shadow: 0 8px 40px rgba(91,75,154,0.08);
+  }
+
+  .pull-quote::before {
+    content: '\201C';
+    font-size: 100px;
+    color: var(--purple);
+    opacity: 0.12;
+    position: absolute;
+    top: -10px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    font-style: normal;
+    color: var(--mid-text);
+    letter-spacing: 0.1em;
+    margin-top: 20px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-it-works { background: var(--white); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .step { position: relative; }
+
+  .step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--purple-pale);
+    line-height: 1;
+    margin-bottom: -16px;
+    display: block;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    color: var(--navy);
+  }
+
+  .step-body { font-size: 14px; line-height: 1.7; color: var(--mid-text); }
+
+  .step-connector {
+    position: absolute;
+    top: 36px; right: -20px;
+    width: 40px; height: 1px;
+    background: var(--purple);
+    opacity: 0.2;
+  }
+
+  .step:last-child .step-connector { display: none; }
+
+  /* ── WHAT SHE DOES ── */
+  .what-she-does { background: var(--navy); }
+
+  .what-she-does .section-label { color: rgba(255,255,255,0.35); }
+  .what-she-does .section-label::after { background: rgba(255,255,255,0.15); }
+  .what-she-does .section-title { color: #fff; }
+  .what-she-does .section-title em { color: var(--electric); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .feature {
+    background: var(--navy-mid);
+    padding: 40px;
+    transition: background 0.2s ease;
+  }
+
+  .feature:hover { background: #353B68; }
+
+  .feature-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .feature-body { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
+
+  /* ── THE PROMPT ── */
+  .the-prompt { background: var(--purple-pale); }
+
+  .prompt-intro {
+    max-width: 640px;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #4A4770;
+    margin-bottom: 44px;
+  }
+
+  .prompt-intro strong { color: var(--navy); font-weight: 500; }
+  .prompt-intro em { font-style: italic; color: var(--purple); }
+
+  .prompt-box {
+    background: var(--navy);
+    padding: 48px;
+    position: relative;
+    border-top: 3px solid var(--electric);
+  }
+
+  .prompt-box::before {
+    content: 'SYSTEM PROMPT';
+    position: absolute;
+    top: 20px; right: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.15);
+  }
+
+  .prompt-section-head {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-top: 28px;
+    margin-bottom: 12px;
+    opacity: 0.85;
+  }
+
+  .prompt-section-head:first-child { margin-top: 0; }
+
+  .prompt-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .prompt-text ul { padding-left: 20px; margin-top: 8px; }
+  .prompt-text li { margin-bottom: 6px; color: rgba(255,255,255,0.65) !important; }
+  .prompt-box p, .prompt-box ul, .prompt-box li { color: rgba(255,255,255,0.65) !important; }
+
+  .prompt-note {
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: rgba(232,255,71,0.06);
+    border-left: 3px solid var(--electric);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* ── SETUP GUIDE ── */
+  .setup-guide { background: var(--soft-bg); }
+
+  .setup-steps { margin-top: 48px; }
+
+  .setup-step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+    align-items: start;
+  }
+
+  .setup-step-num {
+    width: 60px; height: 60px;
+    background: var(--navy);
+    color: var(--electric);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .setup-step-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 12px;
+    color: var(--navy);
+  }
+
+  .setup-step-content p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #4A4770;
+    margin-bottom: 12px;
+  }
+
+  .setup-step-content p strong { color: var(--navy); font-weight: 500; }
+
+  .code-inline {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: var(--navy);
+    color: var(--electric);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .tip-box {
+    background: var(--white);
+    border-left: 3px solid var(--purple);
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--purple);
+    line-height: 1.65;
+    margin-top: 12px;
+    box-shadow: 0 2px 12px rgba(91,75,154,0.08);
+  }
+
+  .tip-box strong {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--navy);
+  }
+
+  /* ── DEPLOY ── */
+  .deploy-guide { background: var(--white); }
+
+  .deploy-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .deploy-option {
+    border: 1px solid var(--border);
+    padding: 40px;
+    background: var(--soft-bg);
+  }
+
+  .deploy-option.recommended {
+    border-color: var(--purple);
+    background: var(--white);
+    position: relative;
+    box-shadow: 0 8px 32px rgba(91,75,154,0.1);
+  }
+
+  .deploy-badge {
+    position: absolute;
+    top: -13px; left: 32px;
+    background: var(--purple);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    padding: 4px 14px;
+    text-transform: uppercase;
+  }
+
+  .deploy-option h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+
+  .deploy-option .deploy-tagline {
+    font-size: 13px;
+    color: var(--mid-text);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .deploy-steps-list { list-style: none; counter-reset: deploy; }
+
+  .deploy-steps-list li {
+    counter-increment: deploy;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #4A4770;
+    padding: 12px 0 12px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .deploy-steps-list li:last-child { border-bottom: none; }
+
+  .deploy-steps-list li::before {
+    content: counter(deploy);
+    position: absolute;
+    left: 0; top: 12px;
+    width: 24px; height: 24px;
+    background: var(--purple-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--purple);
+    font-weight: 500;
+  }
+
+  .deploy-steps-list li strong { color: var(--navy); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.4);
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-align: right;
+    line-height: 2;
+  }
+
+  .footer-right a { color: var(--electric); text-decoration: none; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--purple), transparent);
+    opacity: 0.2;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { min-height: 420px; padding: 40px; }
+    .hero-left { padding: 120px 40px 60px; }
+    section { padding: 70px 40px; }
+    .origin-grid, .steps, .features-grid, .deploy-options { grid-template-columns: 1fr; }
+    nav { padding: 18px 40px; }
+    .nav-links { gap: 20px; }
+    footer { flex-direction: column; gap: 24px; padding: 40px; text-align: center; }
+    .footer-right { text-align: center; }
+    .setup-step { grid-template-columns: 50px 1fr; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">The Daily Dover</a>
+  <ul class="nav-links">
+    <li><a href="#origin">The Story</a></li>
+    <li><a href="#what-she-does">What She Does</a></li>
+    <li><a href="#the-prompt">The Prompt</a></li>
+    <li><a href="#setup">Set It Up</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Whitney Stefko Dover · The Daily Dover Method</p>
+    <h1 class="hero-headline">I'm Not<br>Making<br><em>You</em> a List.</h1>
+    <p class="hero-subhead">So I automated it instead.</p>
+    <p class="hero-body">
+      Every morning at 4am, <strong>Claudette</strong> — my AI Chief of Staff — sends me a complete briefing: today's calendar, to-dos, bills due, our au pair's schedule, and pre-drafted messages for my husband Chris and our au pair Sara. No coding required. Just plain English and a little patience.
+      <br><br>
+      This is how I built it. Here are the prompts. Take what works for your life.
+    </p>
+    <a href="#origin" class="hero-cta">Read the story ↓</a>
+  </div>
+  <div class="hero-right">
+    <div class="briefing-preview">
+      <p class="briefing-header">Daily Dover · Monday, June 9</p>
+      <p class="briefing-title">☀️ Good morning, Whitney.</p>
+      <p class="briefing-subtitle">First full week of summer. You've got this — one thing at a time.</p>
+      <div class="briefing-section">
+        <p class="briefing-section-label">Today</p>
+        <p class="briefing-item">Aqua-Tots 9:30am — bring swim suit + towel for Dunkie</p>
+        <p class="briefing-item urgent">⚡ SRP bill due today <span class="briefing-chip">💰 action needed</span></p>
+        <p class="briefing-item">Sara 7:30am–3pm</p>
+        <p class="briefing-item">FedEx delivery expected 1–5pm</p>
+      </div>
+      <div class="briefing-section">
+        <p class="briefing-section-label">This Week</p>
+        <p class="briefing-item">Wed — Dexter dentist 10am (Chris drop-off)</p>
+        <p class="briefing-item">Thu — Order birthday gift for Emma <span class="briefing-chip">👶 due Fri</span></p>
+        <p class="briefing-item">Fri — Villa Montessori tuition due</p>
+      </div>
+      <div class="briefing-section">
+        <p class="briefing-section-label">For Chris</p>
+        <p class="briefing-item" style="font-style:italic; color:rgba(255,255,255,0.45); font-size:12px;">"Hey — can you handle Dexter's dentist Wed at 10? Also Emma's party gift needs to be ordered by EOD Fri. Love you."</p>
+      </div>
+      <div class="briefing-claudette">
+        <span class="claudette-dot"></span>
+        — Claudette
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ORIGIN -->
+<section class="origin" id="origin">
+  <div class="section-inner">
+    <p class="section-label">The Origin Story</p>
+    <div class="origin-grid">
+      <div class="origin-text">
+        <div class="byline-tag">
+          Director of Policy &amp; Legal Operations, Ford Motor Company · Law Professor
+        </div>
+        <h2 class="section-title">It started with a <em>spreadsheet</em> and a husband.</h2>
+        <p>I'm a working mom, a Director of Policy &amp; Legal Operations at Ford Motor Company, and a law school professor who moonlights as the sole keeper of every single thing our family needed to remember, do, schedule, and follow up on. The mental load is real, and I was carrying all of it.</p>
+        <p>I started in <strong>Claude Chat</strong> by mapping out everything I actually do: daily, weekly, monthly, quarterly. An honest, unsexy inventory of the invisible work. The goal was to split it with my husband Chris.</p>
+        <p>Chris's response? <em>"This is great. Can you just send me a list every day?"</em></p>
+        <p>My response: <strong>absolutely not.</strong> But also... <em>wait. Could I automate that?</em></p>
+        <p>That question is what became Claudette. Claude Chat suggested I move into <strong>Claude Cowork</strong>, where I connected my Gmail, Google Calendar, and a Notes app on my Mac. No coding. Just describing — in plain English — exactly what I needed.</p>
+        <p>Claudette was featured in <em>Business Insider</em> in June 2026. Since then, my inbox has been full of people asking: <em>how?</em> This page is my answer.</p>
+      </div>
+      <div>
+        <div class="pull-quote">
+          "I'm not gonna give you a list every day."
+          <br><br>
+          <span style="font-size:0.78em; opacity:0.8;">So I built something that does it for me. At 4am. Every single morning.</span>
+          <cite>— Whitney Stefko Dover</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-inner">
+    <p class="section-label">The Method</p>
+    <h2 class="section-title">How The Daily Dover <em>Works</em></h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-number">01</span>
+        <h3 class="step-title">Start in Claude Chat</h3>
+        <p class="step-body">Map your actual mental load — daily, weekly, monthly tasks. Get honest about everything you're holding. This becomes the foundation.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <span class="step-number">02</span>
+        <h3 class="step-title">Move to Cowork</h3>
+        <p class="step-body">Claude Cowork lets your AI agent connect to real tools — Gmail, Google Calendar, Notes — and take action, not just chat.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <span class="step-number">03</span>
+        <h3 class="step-title">Connect Your Tools</h3>
+        <p class="step-body">Gmail + Google Calendar are the core. Work email? Forward relevant threads to your personal Gmail. Keep it in one ecosystem.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="step">
+        <span class="step-number">04</span>
+        <h3 class="step-title">Describe, Iterate</h3>
+        <p class="step-body">Write your prompt in plain English. Run it. See what's missing. Refine. The prompt below took months of iteration — start there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT SHE DOES -->
+<section class="what-she-does" id="what-she-does">
+  <div class="section-inner">
+    <p class="section-label">Claudette's Capabilities</p>
+    <h2 class="section-title">What she handles <em>every single day</em></h2>
+    <div class="features-grid">
+      <div class="feature">
+        <span class="feature-icon">📅</span>
+        <h3 class="feature-title">Calendar Triage</h3>
+        <p class="feature-body">Scans Gmail for school emails, party invites, appointments, bills, and deliveries — and adds them to Google Calendar automatically, with the right reminders.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">☀️</span>
+        <h3 class="feature-title">The Morning Briefing</h3>
+        <p class="feature-body">Every day at 4am: a scannable email with today's events, to-dos, upcoming items, financial flags, and a personal affirmation. Under 3 minutes to read.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">💬</span>
+        <h3 class="feature-title">Pre-Drafted Messages</h3>
+        <p class="feature-body">Ready-to-copy iMessage drafts for Chris and our au pair Sara — covering their tasks, schedule, and anything they need to know that day.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎂</span>
+        <h3 class="feature-title">Birthday Party Logic</h3>
+        <p class="feature-body">Detects party invites and auto-schedules: RSVP reminder 3 weeks out, gift order reminder 1 week out. No more last-minute Amazon panic.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">💰</span>
+        <h3 class="feature-title">Bill Tracking</h3>
+        <p class="feature-body">Watches for bills (insurance, utilities, school tuition) and adds "pay by" reminders 5 days before the due date. The ⚡ flag means act today.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📝</span>
+        <h3 class="feature-title">Notes Integration</h3>
+        <p class="feature-body">Reads a running household task list in Apple Notes — daily, weekly, monthly tasks, au pair schedule, work commitments — and weaves it all into the briefing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROMPT -->
+<section class="the-prompt" id="the-prompt">
+  <div class="section-inner">
+    <p class="section-label">The Goods</p>
+    <h2 class="section-title">The Core <em>Prompt</em></h2>
+    <div class="prompt-intro">
+      This is my original system prompt — the foundation Claudette runs on. I've iterated on this <em>a lot</em> since the beginning, and yours will look different for your family. But this is the architecture. Copy it, adapt it, make it yours. <strong>The specificity is what makes it work.</strong>
+    </div>
+    <div class="prompt-box">
+      <div class="prompt-section-head">WHO YOU ARE</div>
+      <p class="prompt-text">You are Whitney's personal Chief of Staff. You are organized, warm, and proactive. Your job is to make sure Whitney is fully prepared for her day and week — as a mother, household manager, and professional — before she wakes up. You have access to her Gmail, Google Calendar, and her Mac Note titled "Dover Household Tasks."</p>
+
+      <div class="prompt-section-head">STEP 1 — REVIEW & UPDATE GOOGLE CALENDAR</div>
+      <p class="prompt-text" style="color: rgba(255,255,255,0.65);">Check Whitney's Gmail and add relevant events if not already on the calendar. Categories to watch:
+        <ul>
+          <li>School, camp & kids' activities — add with 10-min reminder</li>
+          <li>Birthday parties — add party + RSVP reminder (3 weeks out) + gift reminder (1 week out)</li>
+          <li>Bills & utilities — add due date + "pay by" reminder 5 days prior</li>
+          <li>Appointments (doctors, cleaners, services) — add with 10-min reminder</li>
+          <li>Auto-orders & subscriptions — add expected delivery date</li>
+        </ul>
+      </p>
+
+      <div class="prompt-section-head">STEP 2 — REVIEW GOOGLE CALENDAR</div>
+      <p class="prompt-text">Review today's full calendar + remaining days this week. Google Calendar is the source of truth.</p>
+
+      <div class="prompt-section-head">STEP 3 — REVIEW DOVER HOUSEHOLD TASKS NOTE</div>
+      <p class="prompt-text">Read the Mac Note titled "Dover Household Tasks." Pull: daily/weekly/monthly tasks, Sara's schedule (au pair), Whitney's work commitments affecting family schedule, and any one-offs or time-sensitive notes.</p>
+
+      <div class="prompt-section-head">STEP 4 — COMPOSE THE MORNING BRIEFING</div>
+      <p class="prompt-text">Send email to Whitney at 4:00 AM PT daily. Subject: "☀️ Your Dover Briefing — [Day], [Month Date]"
+        <br><br>
+        Structure: <strong>Affirmation</strong> → <strong>Daily Notes & To-Dos</strong> → <strong>Weekly Heads Up</strong> → <strong>For Chris & Sara</strong> (with ready-to-send iMessage drafts for each).
+        <br><br>
+        Flags: ⚡ time-sensitive · 👶 kids-related · 💰 financial. Keep it scannable — bullets, not paragraphs. Max 3 minutes to read. Tone: warm, capable, like a trusted chief of staff who has everything handled.
+      </p>
+
+      <div class="prompt-note">
+        ✦ This prompt took months of iteration. Yours should reflect your family's structure, tools, and rhythms. Rename "Dover Household Tasks" to your own note. Swap Chris and Sara for your people. The logic is the template — the specifics are yours to fill in.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETUP GUIDE -->
+<section class="setup-guide" id="setup">
+  <div class="section-inner">
+    <p class="section-label">The How-To</p>
+    <h2 class="section-title">How to <em>Build Yours</em></h2>
+    <div class="setup-steps">
+
+      <div class="setup-step">
+        <div class="setup-step-num">1</div>
+        <div class="setup-step-content">
+          <h3>Do the mental load audit in Claude Chat</h3>
+          <p>Before you touch any tool, open <strong>Claude.ai</strong> and ask it to help you map everything you do for your household — daily, weekly, monthly, quarterly. Be exhaustive. This becomes the content of your household tasks note, and it's how you teach your agent what "everything" actually means.</p>
+          <div class="tip-box"><strong>Prompt to start:</strong> "Help me create a comprehensive list of everything I manage for my household. Ask me questions to make sure we capture all of it — daily, weekly, monthly, and one-off tasks."</div>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="setup-step-num">2</div>
+        <div class="setup-step-content">
+          <h3>Create your Household Tasks note</h3>
+          <p>In <strong>Apple Notes</strong> (or Google Docs, Notion — whatever you'll actually maintain), create a note with a specific title like <span class="code-inline">Dover Household Tasks</span>. Structure it clearly: Daily Tasks, Weekly Tasks, Monthly Tasks, Au Pair Schedule, Work Commitments This Week, Notes & One-Offs.</p>
+          <p>This note is Claudette's "source of truth" for everything not on the calendar. Keep it updated — she reads it every day.</p>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="setup-step-num">3</div>
+        <div class="setup-step-content">
+          <h3>Open Claude Cowork on your Mac</h3>
+          <p>Download <strong>Claude Desktop</strong> at claude.ai/download. Open it, then switch to the <strong>Cowork</strong> tab. This is where your agent lives — it can access your computer, your apps, and your connected accounts.</p>
+          <div class="tip-box"><strong>Work email workaround:</strong> If your work email (e.g. Outlook) can't be connected directly, go into Outlook settings and add your personal Gmail as a forwarding address for relevant categories — school, bills, anything you want Claudette to see.</div>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="setup-step-num">4</div>
+        <div class="setup-step-content">
+          <h3>Connect Gmail + Google Calendar</h3>
+          <p>In Cowork, connect your <strong>personal Gmail</strong> and <strong>Google Calendar</strong>. These are Claudette's two main data sources. The connection takes about 2 minutes — you'll authorize via your Google account.</p>
+          <p>Make sure the calendar your family events actually live on is the one you connect.</p>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="setup-step-num">5</div>
+        <div class="setup-step-content">
+          <h3>Paste in the prompt and customize it</h3>
+          <p>Copy the system prompt above. In Cowork, paste it into your agent's instructions. Then <strong>personalize it</strong>: replace my family's names with yours, update the note title, adjust the send time, add or remove bill categories that apply to your life.</p>
+          <div class="tip-box"><strong>Pro tip:</strong> Don't try to make it perfect on day one. Run it for a week, see what's missing or wrong, and refine. Iteration is the whole game.</div>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="setup-step-num">6</div>
+        <div class="setup-step-content">
+          <h3>Run it, refine it, make it yours</h3>
+          <p>Trigger a test run and read the output critically. Is anything missing? Is something flagged that shouldn't be? Is the tone right? Every "that's not quite right" is a prompt refinement. The prompt above represents months of small edits.</p>
+          <p><strong>The goal isn't perfection. It's progress.</strong> Even an 80% briefing is better than no briefing.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEPLOY GUIDE -->
+<section class="deploy-guide" id="deploy">
+  <div class="section-inner">
+    <p class="section-label">Publish This Page</p>
+    <h2 class="section-title">How to put this site <em>live</em></h2>
+    <p style="font-size:16px; color:#4A4770; margin-bottom:8px; max-width:600px;">Two free options. Netlify is drag-and-drop simple. GitHub Pages is slightly more technical but free forever with version history.</p>
+    <div class="deploy-options">
+
+      <div class="deploy-option recommended">
+        <div class="deploy-badge">Easiest</div>
+        <h3>Netlify</h3>
+        <p class="deploy-tagline">Drag, drop, done. Live in under 60 seconds.</p>
+        <ol class="deploy-steps-list">
+          <li>Go to <strong>netlify.com</strong> and create a free account</li>
+          <li>Save the <span class="code-inline">index.html</span> file Claude gave you to your desktop</li>
+          <li>On the Netlify dashboard, find the <strong>"drag and drop your site folder here"</strong> box</li>
+          <li>Drag your file (or the folder containing it) into that box</li>
+          <li>Netlify generates a live URL instantly — like <span class="code-inline">brave-fox-123.netlify.app</span></li>
+          <li>Optional: go to Site Settings → Domain Management to set a custom name like <span class="code-inline">thedailydover.netlify.app</span></li>
+          <li>To update the site: drag a new version of the file into the same spot</li>
+        </ol>
+      </div>
+
+      <div class="deploy-option">
+        <h3>GitHub Pages</h3>
+        <p class="deploy-tagline">Free forever. Great if you want version history.</p>
+        <ol class="deploy-steps-list">
+          <li>Create a free account at <strong>github.com</strong></li>
+          <li>Click <strong>+ → New Repository</strong>. Name it anything (e.g. <span class="code-inline">daily-dover</span>). Make it Public.</li>
+          <li>Click <strong>Add File → Upload Files</strong> and upload your <span class="code-inline">index.html</span></li>
+          <li>Go to <strong>Settings → Pages</strong> in your repo</li>
+          <li>Under "Branch," select <span class="code-inline">main</span> and click Save</li>
+          <li>GitHub gives you a URL like <span class="code-inline">yourusername.github.io/daily-dover</span> — live in ~1 minute</li>
+          <li>To update: upload a new version of the file and it republishes automatically</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">The Daily Dover Method</div>
+  <div class="footer-right">
+    Whitney Stefko Dover · © 2026<br>
+    Built with Claude Cowork · No code required<br>
+    <a href="https://www.businessinsider.com/ford-executive-ai-vibe-coded-family-chief-of-staff-2026-6">As seen in Business Insider ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
